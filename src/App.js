@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import GovList from "./pages/GovList";
+import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import GovDetail from "./pages/GovDetail";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="navbar-container">
+        <div className="products-heading">
+          <Link to="/Governement">
+            <h1>Tunisia Governements</h1>
+          </Link>
+        </div>
+      </div>
+      <Routes>
+        <Route path="Governement" element={<Home />}>
+          <Route index element={<GovList />} />
+          <Route path=":govId" element={<GovDetail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
